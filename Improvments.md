@@ -6,6 +6,7 @@
 ### Code
 - Tests configuration 
 - Navigation
+- styles extraction
 
 ### Ideas
 

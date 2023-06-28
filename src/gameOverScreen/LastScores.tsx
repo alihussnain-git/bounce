@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { getPlayingTime } from "../utils/utils";
 
 interface LastScoreProps {

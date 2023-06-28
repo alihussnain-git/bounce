@@ -8,7 +8,7 @@ import {
   Text,
   StyleSheet,
 } from "react-native";
-import { formatTime, saveScore } from "../utils/utils";
+import { saveScore } from "../utils/utils";
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
@@ -21,7 +21,6 @@ export const BouncingCircleScreen = ({ gameOver, startTime }: Props) => {
   const initialAnimationDuration = 2000;
   const animatedValue = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
   const circleSize = useRef(new Animated.Value(100)).current;
-  const [timer, setTimer] = useState(0);
 
   const [speed, setSpeed] = useState(2);
   const [clickCount, setClickCount] = useState(5);
@@ -50,13 +49,6 @@ export const BouncingCircleScreen = ({ gameOver, startTime }: Props) => {
 
   useEffect(() => {
     startBouncingAnimation();
-    const interval = setInterval(() => {
-      setTimer((prevTimer) => prevTimer + 1);
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
   }, []);
 
   const startBouncingAnimation = () => {
@@ -69,7 +61,7 @@ export const BouncingCircleScreen = ({ gameOver, startTime }: Props) => {
   };
 
   const initiateAnimation = () => {
-    const widthPercentage = (screenWidth / 90) * 100;
+    const widthPercentage = (screenWidth / 100) * 37;
     const circleArea = (circleSize as any)._value;
     const maxX = screenWidth - circleArea - widthPercentage;
     const xDistance = maxX;
@@ -101,7 +93,7 @@ export const BouncingCircleScreen = ({ gameOver, startTime }: Props) => {
   };
 
   const changeAnimationDirection = () => {
-    const heightPercentage = (screenHeight / 80) * 100;
+    const heightPercentage = (screenHeight / 100) * 48;
 
     const circleArea = (circleSize as any)._value;
     const maxY = screenHeight - circleArea - heightPercentage;
@@ -145,7 +137,6 @@ export const BouncingCircleScreen = ({ gameOver, startTime }: Props) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Text style={styles.timerText}>Time: {formatTime(timer)}</Text>
       <View style={styles.container}>
         <TouchableOpacity activeOpacity={0.5} onPress={handleCircleClick}>
           <Animated.View style={[styles.circle, animatedStyle]} />
@@ -170,8 +161,5 @@ const styles = StyleSheet.create({
   clickCount: {
     fontSize: 36,
     fontWeight: "bold",
-  },
-  timerText: {
-    margin: 12,
   },
 });
