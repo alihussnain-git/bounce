@@ -135,12 +135,23 @@ export const BouncingCircleScreen = ({ gameOver, startTime }: Props) => {
     }),
   };
 
+  const TouchableCircleView = () => {
+    const circleArea = (circleSize as any)._value;
+    return (
+      <TouchableOpacity
+        style={{ width: circleArea, height: circleArea }}
+        activeOpacity={0.5}
+        onPress={handleCircleClick}
+      />
+    );
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.container}>
-        <TouchableOpacity activeOpacity={0.5} onPress={handleCircleClick}>
-          <Animated.View style={[styles.circle, animatedStyle]} />
-        </TouchableOpacity>
+        <Animated.View style={[styles.circle, animatedStyle]}>
+          <TouchableCircleView />
+        </Animated.View>
         <Text style={styles.clickCount}>{clickCount}</Text>
       </View>
     </View>
