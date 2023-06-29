@@ -1,5 +1,7 @@
 # Bounce App
 
+This is a simple game made in react-native to play with a bouncing circle. Just for fun.
+
 ## Get started
 
 ### Requirements
