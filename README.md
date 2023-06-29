@@ -2,6 +2,12 @@
 
 This is a simple game made in react-native to play with a bouncing circle. Just for fun.
 
+
+https://github.com/alihussnain-git/bounce/assets/58841397/425723e6-ee78-45a5-b689-50b64da6e249
+
+
+
+
 ## Get started
 
 ### Requirements
